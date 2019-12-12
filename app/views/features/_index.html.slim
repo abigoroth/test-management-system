@@ -3,6 +3,7 @@ h1 Listing features
 table.table
   thead
     tr
+      th ID
       th Name
       th Description
       th Pass
@@ -13,6 +14,7 @@ table.table
   tbody
     - @features.each do |feature|
       tr
+        td feature.id
         td = link_to feature.name, [@project, feature]
         td = feature.description
         - specs = feature.specs

@@ -1,4 +1,4 @@
-# README
+### Scaffold 
 
 rails g scaffold Spec name:string step:text feature_id:integer expected:string description:text
 
