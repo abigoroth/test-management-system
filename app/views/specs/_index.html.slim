@@ -38,7 +38,7 @@ table.table
             = f.hidden_field :pass, value: "false"
             = f.submit "Fail"
         td = link_to 'Show Detail', [@project, @feature, spec]
-        td = link_to 'Edit', edit_spec_path(spec)
+        td = link_to 'Edit', [:edit, @project, @feature, spec]
         td = link_to 'Destroy', [@project, @feature, spec], data: { confirm: 'Are you sure?' }, method: :delete
 
 br

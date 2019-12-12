@@ -18,7 +18,7 @@ table.table
         - specs = feature.specs
         td = "#{specs.select{|x| x.pass == true}.length}/#{specs.count}"
         td = link_to 'Show', [@project, feature]
-        td = link_to 'Edit', edit_project_feature_path(feature)
+        td = link_to 'Edit', edit_project_feature_path(@project, feature)
         td = link_to 'Destroy', [@project, feature], data: { confirm: 'Are you sure?' }, method: :delete
 
 br
