@@ -1,11 +1,12 @@
-= simple_form_for(@feature) do |f|
+= simple_form_for(@feature, url: [@project, @feature]) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
     = f.input :name
     = f.input :description
-    = f.input :project_id
 
   .form-actions
     = f.button :submit
+
+= link_to 'Back', [@project]

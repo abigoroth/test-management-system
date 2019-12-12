@@ -1,13 +1,13 @@
 p#notice = notice
 
 p
-  strong Title:
+  strong Project Title:
   = @project.title
 p
   strong Client:
   = @project.client
 
-= render 'modules/index'
+= render 'features/index'
       
 => link_to 'Edit', edit_project_path(@project)
 '|

@@ -1,15 +1,12 @@
-p#notice = notice
-
 p
   strong Name:
   = @feature.name
 p
   strong Description:
   = @feature.description
-p
-  strong Project:
-  = @feature.project_id
 
-=> link_to 'Edit', edit_feature_path(@feature)
+= render 'specs/index'
+
+=> link_to 'Edit', edit_project_feature_path(@project, @feature)
 '|
-=< link_to 'Back', features_path
+=< link_to 'Back', project_path(@project)

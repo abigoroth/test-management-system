@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
   before_action :set_result, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_spec
   # GET /results
   # GET /results.json
   def index
@@ -24,11 +24,12 @@ class ResultsController < ApplicationController
   # POST /results
   # POST /results.json
   def create
-    @result = Result.new(result_params)
+    @result = @spec.results.new(result_params)
+    @spec.update_columns(pass: result_params[:pass])
 
     respond_to do |format|
       if @result.save
-        format.html { redirect_to @result, notice: 'Result was successfully created.' }
+        format.html { redirect_to [@spec.feature.project, @spec.feature] , notice: 'Result was successfully created.' }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class ResultsController < ApplicationController
   def update
     respond_to do |format|
       if @result.update(result_params)
-        format.html { redirect_to @result, notice: 'Result was successfully updated.' }
+        format.html { redirect_to [@spec.feature.project, @spec.feature], notice: 'Result was successfully updated.' }
         format.json { render :show, status: :ok, location: @result }
       else
         format.html { render :edit }
@@ -56,12 +57,16 @@ class ResultsController < ApplicationController
   def destroy
     @result.destroy
     respond_to do |format|
-      format.html { redirect_to results_url, notice: 'Result was successfully destroyed.' }
+      format.html { redirect_to [@spec.feature.project, @spec.feature], notice: 'Result was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_spec
+      @spec = Spec.find(params[:spec_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_result
       @result = Result.find(params[:id])

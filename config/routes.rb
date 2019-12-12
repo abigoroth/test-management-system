@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   resources :specs
-  resources :features
   devise_for :users
   resources :projects do
     resources :actors
-    resources :modules do
+    resources :features do
       resources :specs do
         resources :results
       end

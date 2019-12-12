@@ -1,0 +1,26 @@
+h1 Listing features
+
+table.table
+  thead
+    tr
+      th Name
+      th Description
+      th Pass
+      th
+      th
+      th
+
+  tbody
+    - @features.each do |feature|
+      tr
+        td = link_to feature.name, [@project, feature]
+        td = feature.description
+        - specs = feature.specs
+        td = "#{specs.select{|x| x.pass == true}.length}/#{specs.count}"
+        td = link_to 'Show', [@project, feature]
+        td = link_to 'Edit', edit_project_feature_path(feature)
+        td = link_to 'Destroy', [@project, feature], data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Feature', new_project_feature_path(@project)

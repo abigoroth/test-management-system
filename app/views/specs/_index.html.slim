@@ -1,0 +1,46 @@
+h1 Listing specs
+
+table.table
+  thead
+    tr
+      th ID
+      th Spec
+      th Expected
+      th Result
+      / th Step
+      / th Feature
+      / th Description
+      th
+      th
+      th
+      th
+
+  tbody
+    - @specs.each do |spec|
+      tr
+        td = spec.id
+        td = spec.name
+        td = spec.expected
+        - if spec.results && spec.results.last
+          - if spec.results.last.pass
+            - badge = "<div class='badge badge-success'>Passed #{time_ago_in_words(spec.results.last.created_at)} ago</div>".html_safe
+          - else
+            - badge = "<div class='badge badge-danger'>Failed #{time_ago_in_words(spec.results.last.created_at)} ago</div>".html_safe
+        - else
+          - badge = ''
+        td = badge
+        td
+          - @result = spec.results.new
+          = simple_form_for @result, url: [@project, @feature, spec, @result], html:{ class:'float-left' } do |f|
+            = f.hidden_field :pass, value: "true"
+            = f.submit "Pass"
+          = simple_form_for @result, url: [@project, @feature, spec, @result] do |f|
+            = f.hidden_field :pass, value: "false"
+            = f.submit "Fail"
+        td = link_to 'Show Detail', [@project, @feature, spec]
+        td = link_to 'Edit', edit_spec_path(spec)
+        td = link_to 'Destroy', [@project, @feature, spec], data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Spec', [:new, @project, @feature, :spec]

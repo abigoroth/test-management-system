@@ -1,3 +1,3 @@
 class Project < ApplicationRecord
-  has_many :specs
+  has_many :features, dependent: :destroy
 end

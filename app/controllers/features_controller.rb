@@ -1,5 +1,6 @@
 class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   # GET /features
   # GET /features.json
@@ -10,11 +11,12 @@ class FeaturesController < ApplicationController
   # GET /features/1
   # GET /features/1.json
   def show
+    @specs = @feature.specs
   end
 
   # GET /features/new
   def new
-    @feature = Feature.new
+    @feature = @project.features.new
   end
 
   # GET /features/1/edit
@@ -24,11 +26,11 @@ class FeaturesController < ApplicationController
   # POST /features
   # POST /features.json
   def create
-    @feature = Feature.new(feature_params)
+    @feature = @project.features.new(feature_params)
 
     respond_to do |format|
       if @feature.save
-        format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
+        format.html { redirect_to @project, notice: 'Feature was successfully created.' }
         format.json { render :show, status: :created, location: @feature }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class FeaturesController < ApplicationController
   def update
     respond_to do |format|
       if @feature.update(feature_params)
-        format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Feature was successfully updated.' }
         format.json { render :show, status: :ok, location: @feature }
       else
         format.html { render :edit }
@@ -56,12 +58,17 @@ class FeaturesController < ApplicationController
   def destroy
     @feature.destroy
     respond_to do |format|
-      format.html { redirect_to features_url, notice: 'Feature was successfully destroyed.' }
+      format.html { redirect_to [@project], notice: 'Feature was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_feature
       @feature = Feature.find(params[:id])
