@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @feature.name
+p
+  strong Description:
+  = @feature.description
+p
+  strong Project:
+  = @feature.project_id
+
+=> link_to 'Edit', edit_feature_path(@feature)
+'|
+=< link_to 'Back', features_path

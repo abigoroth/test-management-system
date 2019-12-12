@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  step: MyText
+  feature_id: 1
+  expected: MyString
+  description: MyText
+
+two:
+  name: MyString
+  step: MyText
+  feature_id: 1
+  expected: MyString
+  description: MyText

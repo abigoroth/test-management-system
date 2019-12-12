@@ -1,0 +1,25 @@
+h1 Listing results
+
+table
+  thead
+    tr
+      th Expected
+      th Actual
+      th Pass
+      th
+      th
+      th
+
+  tbody
+    - @results.each do |result|
+      tr
+        td = result.expected
+        td = result.actual
+        td = result.pass
+        td = link_to 'Show', result
+        td = link_to 'Edit', edit_result_path(result)
+        td = link_to 'Destroy', result, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Result', new_result_path

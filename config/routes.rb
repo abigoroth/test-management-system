@@ -1,0 +1,15 @@
+Rails.application.routes.draw do
+  resources :specs
+  resources :features
+  devise_for :users
+  resources :projects do
+    resources :actors
+    resources :modules do
+      resources :specs do
+        resources :results
+      end
+    end
+  end
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "projects#index"
+end

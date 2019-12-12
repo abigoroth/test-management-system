@@ -1,0 +1,21 @@
+h1 Listing actors
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @actors.each do |actor|
+      tr
+        td = actor.name
+        td = link_to 'Show', actor
+        td = link_to 'Edit', edit_actor_path(actor)
+        td = link_to 'Destroy', actor, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Actor', new_actor_path

@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Expected:
+  = @result.expected
+p
+  strong Actual:
+  = @result.actual
+p
+  strong Pass:
+  = @result.pass
+
+=> link_to 'Edit', edit_result_path(@result)
+'|
+=< link_to 'Back', results_path

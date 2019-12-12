@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @spec.name
+p
+  strong Step:
+  = @spec.step
+p
+  strong Feature:
+  = @spec.feature_id
+p
+  strong Expected:
+  = @spec.expected
+p
+  strong Description:
+  = @spec.description
+
+=> link_to 'Edit', edit_spec_path(@spec)
+'|
+=< link_to 'Back', specs_path
