@@ -17,7 +17,7 @@
     "babel-polyfill": "^6.26.0",
     "chart.js": "^2.8.0",
     "chartkick": "^3.1.1",
-    "highcharts": "^7.2.1",
+    "highcharts": "^9.0.0",
     "qr-scanner": "^1.1.1",
     "select2": "^4.0.11",
     "sweetalert2": "^9.3.16",
