@@ -15,7 +15,7 @@
     "@rails/actiontext": "^6.0.0",
     "@zxing/library": "^0.15.1",
     "babel-polyfill": "^6.26.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "chartkick": "^3.1.1",
     "highcharts": "^7.2.1",
     "qr-scanner": "^1.1.1",
